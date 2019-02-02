@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>Hello world</h1>
+</div>
+<div class="container">
+  <p><b>Requirements<br>
+    1. The table should inclcude their full name, contact info (email, address, and phone number) and company name. <br>
+    2. Please put the company name in ALL CAPS.<br>
+    3. Please only display the first five digits of the zipcode.<br>
+    4. Do not show any users who have a phone number with an extension (e.g., phone number ending in x1234)<br>
+    5 .Clicking on the "Full Name" header in the table should sort the users by last name from A-Z. Clicking on it
+    again should sort by last name from Z-A.<br>
+  </b>
+  </p>
+</div>
+<div class="container">
+  <p><b>Unit Test</b>
+  <p>All Unit Tests Passing</p>
+  <p><b>Lint</b></p>
+  <p>All Lints Passing</p>
+  <p><b>======================================  Solution  ==============================</b></p>
+</div>
+<div class="container">
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>User Name</th>
+      <th appSortColumn [sortKey]="'name'" [data]="apiData">Full Name</th>
+      <th>Contact Info</th>
+      <th>Company Name</th>
+      <th>Website</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of apiData">
+      <td>{{data.id}}</td>
+      <td>{{data.username}}</td>
+      <td>{{data.name}}</td>
+      <td><b>Email:</b> {{data.email}}, <b>Address:</b> {{data.address['street']}}, {{data.address['suite']}}
+        , {{data.address['city']}},
+        {{data.address['zipcode'] | zipcode}}, <b>Phone:</b> {{data.phone}}</td>
+      <td>{{data.company['name'] | uppercase}}</td>
+      <td>{{data.website}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
